@@ -8,18 +8,17 @@ on:
       - synchronize
 
 name: Qemu metrics checks
-jobs:
-  
+jobs:  
   boot-time-checks:
     runs-on: ubuntu-20.04
     env:
       GOPATH: ${{ github.workspace }}
     steps:
-      - name: Checkout code
-       uses: actions/checkout@v3
-       with:
-         fetch-depth: 0
-         path: ./src/github.com/${{ github.repository }}
-      - name: run launch times if
-       run: |
-         cd ${GOPATH}/src/github.com/${{ github.repository }} && echo $PWD && ls -lh
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        path: ./src/github.com/${{ github.repository }}
+    - name: run launch times if
+      run: |
+        cd ${GOPATH}/src/github.com/${{ github.repository }} && echo $PWD && ls -lh
