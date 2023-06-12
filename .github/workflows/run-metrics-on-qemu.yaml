@@ -8,7 +8,7 @@ on:
       - synchronize
 
 name: Qemu metrics checks
-jobs:  
+jobs:
   boot-time-checks:
     runs-on: ubuntu-20.04
     env:
@@ -19,6 +19,6 @@ jobs:
       with:
         fetch-depth: 0
         path: ./src/github.com/${{ github.repository }}
-    - name: run launch times if
+    - name: run launch times
       run: |
         cd ${GOPATH}/src/github.com/${{ github.repository }} && echo $PWD && ls -lh
