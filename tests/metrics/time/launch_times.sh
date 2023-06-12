@@ -36,7 +36,7 @@ REQUIRED_CMDS=("bc" "awk")
 
 # set the total number of decimal digits after the decimal point 
 # for representing the calculations results
-CALC_SCALE=4
+CALC_SCALE=3
 
 # The date command format we use to ensure we capture the ns timings
 # Note the no-0-padding - 0 padding the results breaks bc in some cases
@@ -460,7 +460,7 @@ main() {
 			continue
 		fi
 
-		echo "Skipping run due to invalid result"
+		echo "Skipping run due to invalid result:"
 		((max_reps-=1))
 
 		if [ $max_reps -lt 0 ]; then
