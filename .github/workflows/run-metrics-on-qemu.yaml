@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       GOPATH: ${{ github.workspace }}
-      TEST_FOLDER: ${GOPATH}/src/github.com/${{ github.repository }}/tests/metrics/
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -23,6 +22,8 @@ jobs:
     - name: run launch times
       run: |
         cd ${TEST_FOLDER} && echo $PWD && bash time/launch_times.sh -i public.ecr.aws/ubuntu/ubuntu:latest -n 20
+      env:
+        TEST_FOLDER: ${GOPATH}/src/github.com/${{ github.repository }}/tests/metrics
 
     - name: clean environment
       run: |
