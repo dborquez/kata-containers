@@ -10,7 +10,7 @@ on:
 name: Qemu metrics checks
 jobs:
   boot-time-checks:
-    runs-on: ubuntu-20.04
+    runs-on: metrics
     env:
       GOPATH: ${{ github.workspace }}
     steps:
@@ -21,4 +21,4 @@ jobs:
         path: ./src/github.com/${{ github.repository }}
     - name: run launch times
       run: |
-        cd ${GOPATH}/src/github.com/${{ github.repository }} && echo $PWD && ls -lh
+        cd ${GOPATH}/src/github.com/${{ github.repository }} && echo $PWD && lscpu && cat /usr/lib/os-release
