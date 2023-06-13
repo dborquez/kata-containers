@@ -10,7 +10,7 @@ on:
 name: Qemu metrics checks
 jobs:
   boot-time-checks:
-    runs-on: metrics
+    runs-on: ubuntu-20.04
     env:
       GOPATH: ${{ github.workspace }}
     steps:
