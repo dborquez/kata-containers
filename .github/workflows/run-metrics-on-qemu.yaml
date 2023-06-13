@@ -21,10 +21,7 @@ jobs:
         path: ./src/github.com/${{ github.repository }}
     - name: run launch times
       run: |
-        cd ${TEST_FOLDER} && echo $PWD && bash time/launch_times.sh -i public.ecr.aws/ubuntu/ubuntu:latest -n 20
-      env:
-        TEST_FOLDER: ${GOPATH}/src/github.com/${{ github.repository }}/tests/metrics
-
+        cd ${GOPATH}/src/github.com/${{ github.repository }}/tests/metrics && echo $PWD && bash time/launch_times.sh -i public.ecr.aws/ubuntu/ubuntu:latest -n 20
     - name: clean environment
       run: |
         cd ${GOPATH}/src/github.com/${{ github.repository }} && git clean -xfd
