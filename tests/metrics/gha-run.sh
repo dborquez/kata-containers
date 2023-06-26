@@ -91,12 +91,22 @@ function run_test_launchtimes() {
 	bash tests/metrics/time/launch_times.sh -i public.ecr.aws/ubuntu/ubuntu:latest -n 20
 }
 
+function run_test_blogbench() {
+	hypervisor="${1}"
+	info "Running Blogbench test using ${hypervisor} hypervisor"
+
+	create_symbolic_links "${hypervisor}"
+	bash tests/metrics/storage/blogbench.sh
+}
+
 function main() {
 	action="${1:-}"
 	case "${action}" in
 		install-kata) install_kata ;;
 		run-test-launchtimes-qemu) run_test_launchtimes "qemu" ;;
 		run-test-launchtimes-clh) run_test_launchtimes "clh" ;;
+		run-test-blogbench-qemu) run_test_blogbench "qemu" ;;
+		run-test-blogbench-clh) run_test_blogbench "clh" ;;
 		*) >&2 die "Invalid argument" ;;
 	esac
 }
